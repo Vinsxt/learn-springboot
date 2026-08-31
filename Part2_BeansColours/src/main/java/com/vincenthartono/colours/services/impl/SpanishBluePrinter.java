@@ -1,11 +1,12 @@
 package com.vincenthartono.colours.services.impl;
 
 import com.vincenthartono.colours.services.BluePrinter;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
-public class EnglishBluePrinter implements BluePrinter {
+@Service
+public class SpanishBluePrinter implements BluePrinter {
     @Override
     public String print() {
-        return "blue";
+        return "azul";
     }
 }

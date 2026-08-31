@@ -1,13 +1,10 @@
 package com.vincenthartono.colours.services.impl;
 
 import com.vincenthartono.colours.services.RedPrinter;
-import org.springframework.stereotype.Component;
 
-@Component
-public class EnglishRedPrinter implements RedPrinter {
-
+public class SpanishRedPrinter implements RedPrinter {
     @Override
     public String print() {
-        return "red";
+        return "rojo";
     }
 }
