@@ -12,13 +12,14 @@
         <module name="pizza" />
         <module name="colours" />
       </profile>
-      <profile name="Annotation profile for database" enabled="true">
+      <profile name="Annotation profile for database2" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
         </processorPath>
+        <module name="database2" />
         <module name="database" />
       </profile>
     </annotationProcessing>
@@ -27,6 +28,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="colours" options="-parameters" />
       <module name="database" options="-parameters" />
+      <module name="database2" options="-parameters" />
       <module name="pizza" options="-parameters" />
       <module name="quickstart" options="-parameters" />
       <module name="starters" options="-parameters" />
