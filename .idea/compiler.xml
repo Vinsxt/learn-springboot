@@ -18,9 +18,19 @@
         <outputRelativeToContentRoot value="true" />
         <processorPath useClasspath="false">
           <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
         </processorPath>
         <module name="database2" />
         <module name="database" />
+      </profile>
+      <profile name="Annotation profile for database3" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="false">
+          <entry name="$MAVEN_REPOSITORY$/org/projectlombok/lombok/1.18.46/lombok-1.18.46.jar" />
+        </processorPath>
+        <module name="database3" />
       </profile>
     </annotationProcessing>
   </component>
@@ -29,6 +39,7 @@
       <module name="colours" options="-parameters" />
       <module name="database" options="-parameters" />
       <module name="database2" options="-parameters" />
+      <module name="database3" options="-parameters" />
       <module name="pizza" options="-parameters" />
       <module name="quickstart" options="-parameters" />
       <module name="starters" options="-parameters" />
