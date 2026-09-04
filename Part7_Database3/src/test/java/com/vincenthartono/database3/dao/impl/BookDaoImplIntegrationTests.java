@@ -1,7 +1,9 @@
 package com.vincenthartono.database3.dao.impl;
 
 import com.vincenthartono.database3.TestDataUtil;
+import com.vincenthartono.database3.dao.AuthorDao;
 import com.vincenthartono.database3.domain.Author;
+import com.vincenthartono.database3.domain.Book;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,22 +16,28 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
-public class AuthorDaoImplIntegrationTests {
+public class BookDaoImplIntegrationTests {
 
-    private AuthorDaoImpl underTest;
+    private AuthorDao authorDao;
+
+    private BookDaoImpl underTest;
 
     @Autowired
-    public AuthorDaoImplIntegrationTests(AuthorDaoImpl underTest) {
+    public BookDaoImplIntegrationTests(BookDaoImpl underTest, AuthorDao authorDao){
         this.underTest = underTest;
     }
 
     @Test
-    public void testThatAuthorCanBeCreatedAndRecalled() {
-
+    public void testThatBookCanBeCreatedAndRecalled(){
         Author author = TestDataUtil.createTestAuthor();
-        underTest.create(author);
-        Optional<Author> result = underTest.findOne(author.getId());
+        authorDao.create(author);
+
+        Book book = TestDataUtil.createTestBook();
+        book.setAuthorId(author.getId());
+
+        underTest.create(book);
+        Optional<Book> result = underTest.find(book.getIsbn());
         assertThat(result).isPresent();
-        assertThat(result.get()).isEqualTo(author);
+        assertThat(result.get()).isEqualTo(book);
     }
 }
