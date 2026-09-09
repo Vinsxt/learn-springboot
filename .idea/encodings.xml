@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/Part10_Database5/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Part1_mvnwFlow/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Part2_BeansColours/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Part3_Starters/src/main/java" charset="UTF-8" />
@@ -8,5 +9,7 @@
     <file url="file://$PROJECT_DIR$/Part5_Database/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Part6_Database2/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Part7_Database3/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Part8_Database4/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Part9_Books/src/main/java" charset="UTF-8" />
   </component>
 </project>
