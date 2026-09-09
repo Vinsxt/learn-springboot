@@ -1,4 +1,4 @@
-package com.vincenthartono.database5.domain;
+package com.vincenthartono.database5.domain.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -14,7 +14,7 @@ import lombok.extern.java.Log;
 @Builder
 @Entity
 @Table(name = "books")
-public class Book {
+public class BookEntity {
 
     @Id
     private String isbn;
@@ -23,6 +23,6 @@ public class Book {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "author_id")
-    private Author author;
+    private AuthorEntity authorEntity;
 
 }
