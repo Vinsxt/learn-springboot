@@ -34,7 +34,7 @@ public class BookEntityRepositoryIntegrationTests {
         AuthorEntity authorEntity = TestDataUtil.createTestAuthorA();
         AuthorEntity savedAuthorEntity = authorRepository.save(authorEntity);
 
-        BookEntity bookEntity = TestDataUtil.createTestBookA(savedAuthorEntity);
+        BookEntity bookEntity = TestDataUtil.createTestBookEntityA(savedAuthorEntity);
         underTest.save(bookEntity);
 
         Optional<BookEntity> result = underTest.findById(bookEntity.getIsbn());
@@ -47,7 +47,7 @@ public class BookEntityRepositoryIntegrationTests {
         AuthorEntity authorEntity = TestDataUtil.createTestAuthorA();
         AuthorEntity savedAuthorEntity = authorRepository.save(authorEntity);
 
-        BookEntity bookEntityA = TestDataUtil.createTestBookA(savedAuthorEntity);
+        BookEntity bookEntityA = TestDataUtil.createTestBookEntityA(savedAuthorEntity);
         underTest.save(bookEntityA);
 
         BookEntity bookEntityB = TestDataUtil.createTestBookB(savedAuthorEntity);
@@ -66,7 +66,7 @@ public class BookEntityRepositoryIntegrationTests {
         AuthorEntity authorEntity = TestDataUtil.createTestAuthorA();
         AuthorEntity savedAuthorEntity = authorRepository.save(authorEntity);
 
-        BookEntity bookEntityA = TestDataUtil.createTestBookA(savedAuthorEntity);
+        BookEntity bookEntityA = TestDataUtil.createTestBookEntityA(savedAuthorEntity);
         underTest.save(bookEntityA);
 
         bookEntityA.setTitle("UPDATED");
@@ -83,7 +83,7 @@ public class BookEntityRepositoryIntegrationTests {
         AuthorEntity authorEntity = TestDataUtil.createTestAuthorA();
         AuthorEntity savedAuthorEntity = authorRepository.save(authorEntity);
 
-        BookEntity bookEntityA = TestDataUtil.createTestBookA(savedAuthorEntity);
+        BookEntity bookEntityA = TestDataUtil.createTestBookEntityA(savedAuthorEntity);
         underTest.save(bookEntityA);
 
         underTest.deleteById(bookEntityA.getIsbn());
