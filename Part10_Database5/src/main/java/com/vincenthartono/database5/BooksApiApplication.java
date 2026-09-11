@@ -6,10 +6,10 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 @Log
-public class Database5Application {
+public class BooksApiApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Database5Application.class, args);
+		SpringApplication.run(BooksApiApplication.class, args);
 	}
 
 }
