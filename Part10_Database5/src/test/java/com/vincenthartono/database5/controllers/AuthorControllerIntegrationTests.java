@@ -13,7 +13,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.assertj.MockMvcTester;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import tools.jackson.databind.ObjectMapper;
@@ -85,7 +84,7 @@ public class AuthorControllerIntegrationTests {
     public void testThatListAuthorsReturnsListOfAuthors() throws Exception {
 
         AuthorEntity testAuthorEntityA = TestDataUtil.createTestAuthorA();
-        authorService.createAuthor(testAuthorEntityA);
+        authorService.save(testAuthorEntityA);
 
         mockMvc.perform(
                 MockMvcRequestBuilders.get("/authors")
@@ -102,7 +101,7 @@ public class AuthorControllerIntegrationTests {
     @Test
     public void testThatGetAuthorReturnsHttpStatus200WhenAuthorExist() throws Exception {
         AuthorEntity testAuthorEntityA = TestDataUtil.createTestAuthorA();
-        authorService.createAuthor(testAuthorEntityA);
+        authorService.save(testAuthorEntityA);
 
         mockMvc.perform(
                 MockMvcRequestBuilders.get("/authors/1")
@@ -113,7 +112,7 @@ public class AuthorControllerIntegrationTests {
     @Test
     public void testThatGetAuthorReturnsHttpStatus404WhenNoAuthorExist() throws Exception {
         AuthorEntity testAuthorEntityA = TestDataUtil.createTestAuthorA();
-        authorService.createAuthor(testAuthorEntityA);
+        authorService.save(testAuthorEntityA);
 
         mockMvc.perform(
                 MockMvcRequestBuilders.get("/authors/99")
@@ -124,7 +123,7 @@ public class AuthorControllerIntegrationTests {
     @Test
     public void testThatGetAuthorReturnsAuthorWhenAuthorExist() throws Exception {
         AuthorEntity testAuthorEntityA = TestDataUtil.createTestAuthorA();
-        authorService.createAuthor(testAuthorEntityA);
+        authorService.save(testAuthorEntityA);
 
         mockMvc.perform(
                 MockMvcRequestBuilders.get("/authors/1")

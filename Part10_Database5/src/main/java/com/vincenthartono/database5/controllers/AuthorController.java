@@ -5,7 +5,6 @@ import com.vincenthartono.database5.domain.dto.AuthorDto;
 import com.vincenthartono.database5.domain.entities.AuthorEntity;
 import com.vincenthartono.database5.mappers.Mapper;
 import com.vincenthartono.database5.services.AuthorService;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -29,7 +28,7 @@ public class AuthorController {
     @PostMapping(path = "/authors")
     public ResponseEntity<AuthorDto> createAuthor (@RequestBody AuthorDto author){
         AuthorEntity authorEntity = authorMapper.mapFrom(author);
-        AuthorEntity savedAuthorEntity = authorService.createAuthor(authorEntity);
+        AuthorEntity savedAuthorEntity = authorService.save(authorEntity);
         return new ResponseEntity<>(authorMapper.MapTo(savedAuthorEntity), HttpStatus.CREATED);
     }
 
@@ -48,5 +47,24 @@ public class AuthorController {
             AuthorDto authorDto = authorMapper.MapTo(authorEntity);
             return new ResponseEntity<>(authorDto, HttpStatus.OK);
         }).orElse(new ResponseEntity<>(HttpStatus.NOT_FOUND));
+    }
+
+    @PutMapping("/authors/{id}")
+    public ResponseEntity<AuthorDto> fullUpdateAuthor(
+            @PathVariable("id") Long id,
+            @RequestBody AuthorDto authorDto) {
+
+        if(!authorService.isExists(id)) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+
+        authorDto.setId(id);
+        AuthorEntity authorEntity = authorMapper.mapFrom(authorDto);
+        AuthorEntity savedAuthorEntity = authorService.save(authorEntity);
+        return new ResponseEntity<>(
+                authorMapper.MapTo(savedAuthorEntity),
+                HttpStatus.OK
+        );
+
     }
 }
