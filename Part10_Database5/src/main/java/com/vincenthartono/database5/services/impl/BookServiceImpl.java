@@ -1,21 +1,25 @@
 package com.vincenthartono.database5.services.impl;
 
 import com.vincenthartono.database5.domain.entities.BookEntity;
+import com.vincenthartono.database5.repositories.AuthorRepository;
 import com.vincenthartono.database5.repositories.BookRepository;
 import com.vincenthartono.database5.services.BookService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 @Service
 public class BookServiceImpl implements BookService {
 
+    private final AuthorRepository authorRepository;
     private BookRepository bookRepository;
 
-    public BookServiceImpl(BookRepository bookRepository) {
+    public BookServiceImpl(BookRepository bookRepository, AuthorRepository authorRepository) {
         this.bookRepository = bookRepository;
+        this.authorRepository = authorRepository;
     }
 
     @Override
@@ -30,5 +34,10 @@ public class BookServiceImpl implements BookService {
                 bookRepository.findAll().spliterator(),
                 false)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Optional<BookEntity> findOne(String isbn) {
+        return bookRepository.findById(isbn);
     }
 }
