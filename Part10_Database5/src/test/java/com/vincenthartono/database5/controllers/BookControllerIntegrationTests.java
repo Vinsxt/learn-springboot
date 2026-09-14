@@ -4,7 +4,6 @@ import com.vincenthartono.database5.TestDataUtil;
 import com.vincenthartono.database5.domain.dto.BookDto;
 import com.vincenthartono.database5.domain.entities.BookEntity;
 import com.vincenthartono.database5.services.BookService;
-import jakarta.persistence.Table;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +16,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import tools.jackson.databind.ObjectMapper;
-
-import java.awt.print.Book;
 
 @SpringBootTest
 @ExtendWith(SpringExtension.class)
@@ -83,7 +80,7 @@ public class BookControllerIntegrationTests {
     public void testThatListBooksReturnsBook() throws Exception {
 
         BookEntity testBookEntityA = TestDataUtil.createTestBookEntityA(null);
-        bookService.createBook(testBookEntityA.getIsbn(), testBookEntityA);
+        bookService.createUpdateBook(testBookEntityA.getIsbn(), testBookEntityA);
 
         mockMvc.perform(
                 MockMvcRequestBuilders.get("/books")
@@ -99,7 +96,7 @@ public class BookControllerIntegrationTests {
     public void testThatGetBooksReturnsHttpStatus200OkWhenBookExists() throws Exception {
 
         BookEntity testBookEntityA = TestDataUtil.createTestBookEntityA(null);
-        bookService.createBook(testBookEntityA.getIsbn(), testBookEntityA);
+        bookService.createUpdateBook(testBookEntityA.getIsbn(), testBookEntityA);
 
         mockMvc.perform(
                 MockMvcRequestBuilders.get("/books/" + testBookEntityA.getIsbn())
@@ -126,7 +123,7 @@ public class BookControllerIntegrationTests {
     public void testThatGetOneBookReturnsCorrectBook() throws Exception {
 
         BookEntity testBookEntityA = TestDataUtil.createTestBookEntityA(null);
-        bookService.createBook(testBookEntityA.getIsbn(), testBookEntityA);
+        bookService.createUpdateBook(testBookEntityA.getIsbn(), testBookEntityA);
 
         mockMvc.perform(
                 MockMvcRequestBuilders.get("/books/" + testBookEntityA.getIsbn())
