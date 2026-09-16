@@ -4,8 +4,10 @@ import com.vincenthartono.database5.domain.entities.BookEntity;
 import com.vincenthartono.database5.repositories.AuthorRepository;
 import com.vincenthartono.database5.repositories.BookRepository;
 import com.vincenthartono.database5.services.BookService;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -34,6 +36,11 @@ public class BookServiceImpl implements BookService {
                 bookRepository.findAll().spliterator(),
                 false)
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    public Page<BookEntity> findAll(Pageable pageable) {
+        return bookRepository.findAll(pageable);
     }
 
     @Override
